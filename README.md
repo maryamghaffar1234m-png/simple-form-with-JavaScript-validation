@@ -30,8 +30,7 @@ The form validates user input before submission:
 * Validates email format
 * Checks password length (minimum 6 characters)
 * Confirms matching passwords
-
-## 💡 Purpose
+##💡 Purpose
 
 This project is created to practice frontend form validation and modern UI design techniques.
 
