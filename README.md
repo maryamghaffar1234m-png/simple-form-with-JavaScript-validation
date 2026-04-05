@@ -34,7 +34,6 @@ The form validates user input before submission:
 
 This project is created to practice frontend form validation and modern UI design techniques.
 
----
 
 💻 Designed with creativity and attention to detail
 
