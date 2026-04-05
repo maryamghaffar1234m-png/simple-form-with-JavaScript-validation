@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Next Level Form</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  width: 350px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  color: white;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  margin-bottom: 15px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.input-box input:focus {
+  box-shadow: 0 0 5px #fff;
+}
+
+.error {
+  color: #ff4d4d;
+  font-size: 13px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #ddd;
+}
+
+.success {
+  text-align: center;
+  color: lightgreen;
+  margin-top: 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="form-container">
+  <h2>Create Account</h2>
+
+  <form onsubmit="return validateForm()">
+
+```
+<div class="input-box">
+  <input type="text" id="name" placeholder="Enter Name">
+  <div class="error" id="nameError"></div>
+</div>
+
+<div class="input-box">
+  <input type="text" id="email" placeholder="Enter Email">
+  <div class="error" id="emailError"></div>
+</div>
+
+<div class="input-box">
+  <input type="password" id="password" placeholder="Enter Password">
+  <div class="error" id="passwordError"></div>
+</div>
+
+<div class="input-box">
+  <input type="password" id="confirmPassword" placeholder="Confirm Password">
+  <div class="error" id="confirmError"></div>
+</div>
+
+<button type="submit">Register</button>
+
+<div class="success" id="successMsg"></div>
+```
+
+  </form>
+</div>
+
+<script>
+function validateForm() {
+
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let password = document.getElementById("password").value.trim();
+  let confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+  let valid = true;
+
+  document.getElementById("nameError").innerText = "";
+  document.getElementById("emailError").innerText = "";
+  document.getElementById("passwordError").innerText = "";
+  document.getElementById("confirmError").innerText = "";
+  document.getElementById("successMsg").innerText = "";
+
+  if (name === "") {
+    document.getElementById("nameError").innerText = "Name required";
+    valid = false;
+  }
+
+  let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.match(pattern)) {
+    document.getElementById("emailError").innerText = "Valid email required";
+    valid = false;
+  }
+
+  if (password.length < 6) {
+    document.getElementById("passwordError").innerText = "Min 6 characters";
+    valid = false;
+  }
+
+  if (confirmPassword !== password) {
+    document.getElementById("confirmError").innerText = "Passwords not match";
+    valid = false;
+  }
+
+  if (valid) {
+    document.getElementById("successMsg").innerText = "Account Created!";
+  }
+
+  return valid;
+}
+</script>
+
+</body>
+</html>
+
+
